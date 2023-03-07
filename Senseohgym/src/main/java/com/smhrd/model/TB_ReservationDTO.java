@@ -5,7 +5,6 @@ public class TB_ReservationDTO {
 	private int rev_seq; // 예약순번
 	private String mb_id;
 	private String rs_machine; // 사용기구명
-	private String rs_time; // 예약시간
 	private int use_time; // 사용시간
 	private String reg_time; // 접수시간
 	
@@ -27,12 +26,7 @@ public class TB_ReservationDTO {
 	public void setRs_machine(String rs_machine) {
 		this.rs_machine = rs_machine;
 	}
-	public String getRs_time() {
-		return rs_time;
-	}
-	public void setRs_time(String rs_time) {
-		this.rs_time = rs_time;
-	}
+	
 	public int getUse_time() {
 		return use_time;
 	}
