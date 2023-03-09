@@ -1,1 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.smhrd.model.TB_MemberDAO">
+  
+	<!-- Member 로그인 login -->
+	<select id="login" parameterType="TB_MEMBERDTO" resultType="TB_MEMBERDTO">
+		SELECT * FROM TB_MEMBER
+		WHERE MB_NAME = #{mb_name} 
+		AND MB_CARD = #{mb_card}
+	</select>  	
+  
+  </mapper>
