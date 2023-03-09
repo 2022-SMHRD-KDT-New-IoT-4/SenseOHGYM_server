@@ -2,13 +2,14 @@ package com.smhrd.model;
 
 public class TB_BoardDTO {
 	
+	
 	private int bo_seq; // 글번호
-	private String bo_title;
-	private String bo_content;
-	private String bo_file;
+	private String bo_title; // 글제목
+	private String bo_content; // 글내용
+	private String bo_file; // 첨부파일
 	private int bo_cnt; // 글조회수
 	private String bo_dt; // 글작성일자
-	private String mb_id;
+	private String mb_card; // 카드번호
 	
 	public int getBo_seq() {
 		return bo_seq;
@@ -46,11 +47,14 @@ public class TB_BoardDTO {
 	public void setBo_dt(String bo_dt) {
 		this.bo_dt = bo_dt;
 	}
-	public String getMb_id() {
-		return mb_id;
+	public String getMb_card() {
+		return mb_card;
 	}
-	public void setMb_id(String mb_id) {
-		this.mb_id = mb_id;
+	public void setMb_card(String mb_card) {
+		this.mb_card = mb_card;
 	}
+	
+	
+	
 	
 }
