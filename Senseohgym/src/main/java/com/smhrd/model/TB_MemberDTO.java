@@ -8,7 +8,7 @@ public class TB_MemberDTO {
 	private String mb_gender; // 성별 
 	private String gym_name; // 헬스장명
 	private char mb_type; //회원유형
-	private int mb_joindate; // 가입일자
+	private String mb_joindate; // 가입일자
 	
 	
 	public String getMb_name() {
@@ -47,10 +47,10 @@ public class TB_MemberDTO {
 	public void setMb_type(char mb_type) {
 		this.mb_type = mb_type;
 	}
-	public int getMb_joindate() {
+	public String getMb_joindate() {
 		return mb_joindate;
 	}
-	public void setMb_joindate(int mb_joindate) {
+	public void setMb_joindate(String mb_joindate) {
 		this.mb_joindate = mb_joindate;
 	}
 
