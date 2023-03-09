@@ -40,10 +40,7 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		com = map.get(finalUrl);
 		String result = com.execute(request, response);
-		System.out.println("rdPath : "+result);
-		
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().print(result);
+		System.out.println("결과 : "+result);
 		
 	}
 }
