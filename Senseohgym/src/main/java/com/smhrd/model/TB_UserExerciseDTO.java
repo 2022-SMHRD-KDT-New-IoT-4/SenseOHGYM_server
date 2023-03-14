@@ -6,7 +6,8 @@ public class TB_UserExerciseDTO {
 	private String mb_card; // 카드번호
 	private int rs_usetime; // 사용시간
 	private String rev_machine; // 사용기구명
-	private int reg_date; // 접수시간
+	private String reg_date; // 접수시간
+	private String gymname; // 헬스장명
 
 	public TB_UserExerciseDTO(String mb_card) {
 		super();
@@ -45,12 +46,17 @@ public class TB_UserExerciseDTO {
 		this.rev_machine = rev_machine;
 	}
 
-	public int getReg_date() {
-		return reg_date;
+	public String getGymname() {
+		return gymname;
 	}
 
-	public void setReg_date(int reg_date) {
+	public void setGymname(String gymname) {
+		this.gymname = gymname;
+	}
+
+	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
 
+	
 }
