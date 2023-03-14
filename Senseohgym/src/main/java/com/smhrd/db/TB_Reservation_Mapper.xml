@@ -7,9 +7,9 @@
   
   	<!-- 예약하기 reservation -->
 	<insert id="join" parameterType="TB_ReservationDTO">
-	INSERT INTO TB_RESERVATION(mb_card, rs_machine, use_time, reg_time)
-	VALUES (#{mb_card},#{rs_machine},#{use_time},SYSDATE)
-  </insert>
+		INSERT INTO TB_RESERVATION(mb_card, rs_machine, use_time, reg_time)
+		VALUES (#{mb_card},#{rs_machine},#{use_time},SYSDATE)
+  	</insert>
   
   
   </mapper>

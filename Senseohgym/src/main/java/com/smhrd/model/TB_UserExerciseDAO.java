@@ -11,7 +11,6 @@ public class TB_UserExerciseDAO {
 	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 
 	// 운동정보 보내기  TB_UserExerciseDTO
-	
 	public TB_UserExerciseDTO selcet(TB_UserExerciseDTO dto) {
 		TB_UserExerciseDTO result = null;
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);

@@ -13,7 +13,9 @@ import com.google.gson.JsonObject;
 import com.smhrd.controller.Command;
 import com.smhrd.controller.Member_JoinProgram;
 import com.smhrd.controller.Member_LoginProgram;
+import com.smhrd.controller.Member_SelectAllProgram;
 import com.smhrd.controller.Reservation_joinProgram;
+import com.smhrd.controller.UserExercise_SelectAllProgram;
 import com.smhrd.controller.UserExercise_TossProgram;
 
 @WebServlet("*.do")
@@ -28,8 +30,14 @@ public class FrontController extends HttpServlet {
 		// TB_MEMBER
 		map.put("Member_Login.do", new Member_LoginProgram());
 		map.put("Member_Join.do", new Member_JoinProgram());
+		map.put("Member_SelectAll.do", new Member_SelectAllProgram());
+						
+		// TB_RESERVATION
 		map.put("Reservation_Join.do", new Reservation_joinProgram());
+						
+		// TB_USEREXERCISE
 		map.put("UserExercise_Toss.do", new UserExercise_TossProgram());
+		map.put("Admin_ExerciseCheck.do", new UserExercise_SelectAllProgram());
 	}
     
 	protected void service(HttpServletRequest request, HttpServletResponse response)

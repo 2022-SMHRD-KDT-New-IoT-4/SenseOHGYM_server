@@ -10,11 +10,11 @@ public class TB_MemberDTO {
 	private String mb_joindate; // 가입일자
 	private String gym_name; // 헬스장명
 	
+	public TB_MemberDTO() {
+		super();
+	}
 
-
-	
-
-public TB_MemberDTO(String mb_name, String mb_card) {
+	public TB_MemberDTO(String mb_name, String mb_card) {
 		super();
 		this.mb_name = mb_name;
 		this.mb_card = mb_card;
