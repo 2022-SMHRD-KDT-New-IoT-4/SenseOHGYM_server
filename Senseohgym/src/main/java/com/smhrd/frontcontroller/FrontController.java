@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.smhrd.controller.Command;
+import com.smhrd.controller.Member_JoinProgram;
 import com.smhrd.controller.Member_LoginProgram;
+import com.smhrd.controller.Reservation_joinProgram;
+import com.smhrd.controller.UserExercise_TossProgram;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -24,7 +27,9 @@ public class FrontController extends HttpServlet {
 		
 		// TB_MEMBER
 		map.put("Member_Login.do", new Member_LoginProgram());
-		
+		map.put("Member_Join.do", new Member_JoinProgram());
+		map.put("Reservation_Join.do", new Reservation_joinProgram());
+		map.put("UserExercise_Toss.do", new UserExercise_TossProgram());
 	}
     
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -28,9 +28,8 @@ public class Member_LoginProgram implements Command{
 
 		System.out.println("name: "+name+" card: "+card);
 		
-		TB_MemberDTO dto = new TB_MemberDTO();
-		dto.setMb_name(name);
-		dto.setMb_card(card);
+		TB_MemberDTO dto = new TB_MemberDTO(name, card);
+
 		
 		TB_MemberDAO dao = new TB_MemberDAO();
 		TB_MemberDTO result = dao.Login(dto);

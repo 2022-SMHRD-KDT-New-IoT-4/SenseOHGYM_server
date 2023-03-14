@@ -9,6 +9,12 @@
 		SELECT * FROM TB_MEMBER
 		WHERE MB_NAME = #{mb_name} 
 		AND MB_CARD = #{mb_card}
-	</select>  	
+	</select> 
+	
+	   <!-- 회원가입 join -->
+  <insert id="join" parameterType="TB_MemberDTO">
+	INSERT INTO TB_MEMBER
+	VALUES (#{mb_name},#{mb_card},#{mb_birthdate},#{mb_gender},#{mb_type},SYSDATE,#{gym_name})
+  </insert> 	
   
   </mapper>
