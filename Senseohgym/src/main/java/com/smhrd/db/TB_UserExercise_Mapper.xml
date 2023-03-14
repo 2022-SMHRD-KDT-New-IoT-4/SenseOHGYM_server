@@ -2,21 +2,39 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.smhrd.model.TB_UserExerciseDAO">
-  	<select id="select" parameterType="TB_UserExerciseDTO" resultType="TB_UserExerciseDTO">
+<mapper namespace="com.smhrd.model.TB_UserExerciseDAO">
+	<select id="select" parameterType="TB_UserExerciseDTO"
+		resultType="TB_UserExerciseDTO">
 
-		SELECT RS_USETIME, REV_MACHINE 
-		  FROM TB_USER_EXERCISE
-		 WHERE MB_CARD = #{mb_card} 	
-		
-      <!--
-        SELECT * FROM TB_USER_EXERCISE
-		WHERE MB_NAME = #{mb_name} 
-		AND MB_CARD = #{mb_card}
-		-->	
+		<!-- 사용시간, 날짜(접수시간) 찾습니다. 왜? 안드로이드 그래프 출력때문엥 -->
+		SELECT RS_USETIME, REG_DATE
+		FROM TB_USER_EXERCISE
+		WHERE MB_CARD = #{mb_card}
+
+        
 	</select>
-  
-  
-  
-  
-  </mapper>
+	
+		<select id="select" parameterType="TB_UserExerciseDTO"
+		resultType="TB_UserExerciseDTO">
+
+
+		<!-- 사용기구명의 횟수를 넘겨줍니다. MACHINE_COUNT라는 이름으로 구별됨!! -->
+		SELECT REV_MACHINE, COUNT(*) AS MACHINE_COUNT
+        FROM TB_USER_EXERCISE
+        WHERE MB_CARD = #{mb_card} 
+        GROUP BY REV_MACHINE;
+
+
+        
+	</select>
+	
+	
+	
+	
+	
+	
+
+
+
+
+</mapper>
