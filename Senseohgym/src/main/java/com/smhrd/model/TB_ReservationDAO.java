@@ -8,7 +8,7 @@ import com.smhrd.db.SqlSessionManager;
 public class TB_ReservationDAO {
 	
 	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
-
+	
 	// 예약하기 reservation
 	public int reservation(TB_ReservationDTO dto) {
 		int row = 0;

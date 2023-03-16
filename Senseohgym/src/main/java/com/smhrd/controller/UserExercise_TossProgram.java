@@ -1,6 +1,9 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,39 +15,61 @@ import com.smhrd.model.TB_UserExerciseDTO;
 
 public class UserExercise_TossProgram implements Command {
 	// 운동정보 보내기
-	
+	List<TB_UserExerciseDTO> result;
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-
-		String mb_card = request.getParameter("mb_card"); //카드번호
+		
+		//카드번호
+		String mb_card = request.getParameter("mb_card");
+		// 운동시간확인 버튼과 기구사용횟수 버튼을 구별하기 위한 변수
+		// 운동시간확인 버튼 누르면 btn_type의 값 0이 들어옴, 기구사용횟수 버튼의 btn_type = 1 들어옴
+		String btn_type = request.getParameter("btn_type");
 		
 		System.out.println("안드로이드에서 넘어온 값 확인");
 		System.out.println(mb_card);
+		System.out.println(btn_type);
 
 		
 		Gson gson = new Gson();
 		String UserExserciseJson = ""; // Json을 담을 변수
 		TB_UserExerciseDTO dto = new TB_UserExerciseDTO(mb_card);
 		TB_UserExerciseDAO dao = new TB_UserExerciseDAO();
-		TB_UserExerciseDTO result = dao.selcet(dto);
-		System.out.println(result);
+		
+	
+		
+		switch (btn_type) {
+		case "0": {
+			result = dao.select(dto);
+			break;
+		}
+		case "1" : {
+			result = dao.select1(dto);
+			break;
+		}
+		default:
+			result = null;
+		}
+		
+		//제대로 값이 담겼는 지 확인
+		//운동시간확인 버튼을 누르면 select함수 쿼리문의 값이 출력
+		//기구사용횟수 버튼을 누르면 select1함수 쿼리문의 값이 출력
+		System.out.println(result); 
 		
 		
 		
-		if(result != null) { 
-			// 운동정보보내기 성공
-			// 안드로이드에 해당 값을 보내줘야함
+		
+
+		if(result != null) {
 			System.out.println(dto.getExr_seq()+" 운동정보 보내기 완료 .");
+			//gson형태로 담아주기
 			UserExserciseJson = gson.toJson(result);
 			System.out.println(UserExserciseJson);
-			//reservationJson = reservationJson.toJson(row);
 			// 제이슨형식으로 보내주기
-			//response.setContentType("application/json; charset=UTF-8"); 
+			response.setContentType("application/json; charset=UTF-8"); 
 			response.setContentType("charset=UTF-8");
 			// 안드로이드 전송
 			response.getWriter().print(UserExserciseJson); 
-			
 			return "운동정보 전송 완료";
 			
 		}else {

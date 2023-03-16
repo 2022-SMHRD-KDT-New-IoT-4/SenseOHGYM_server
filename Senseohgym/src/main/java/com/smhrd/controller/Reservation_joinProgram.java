@@ -20,8 +20,8 @@ public class Reservation_joinProgram implements Command {
 
 //		int rev_seq = Integer.parseInt(request.getParameter("rev_seq")); //예약순번
 		String mb_card = request.getParameter("mb_card"); //카드번호
-		String rs_machine = request.getParameter("exername"); // 사용기구명
-		int use_time = Integer.parseInt(request.getParameter("etUseTime")); // 사용시간 
+		String rs_machine = request.getParameter("rs_machine"); // 사용기구명
+		int use_time = Integer.parseInt(request.getParameter("use_time")); // 사용시간 
 //		int reg_time = Integer.parseInt(request.getParameter("reg_time")); // 접수시간
 		
 		System.out.println("안드로이드에서 넘어온 값 확인");
@@ -49,10 +49,9 @@ public class Reservation_joinProgram implements Command {
 			//reservationJson = reservationJson.toJson(row);
 			// 제이슨형식으로 보내주기
 			//response.setContentType("application/json; charset=UTF-8"); 
-			response.setContentType("charset=UTF-8");
+			//response.setContentType("charset=UTF-8");
 			// 안드로이드 전송
-			response.getWriter().print(Integer.toString(row)); 
-			
+			response.getWriter().print(row); 
 			return "예약 완료";
 			
 		}else {

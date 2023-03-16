@@ -10,11 +10,14 @@
 
     <typeAliases>
     <!--  MemberMapper파일에서 사용할 type들의 별명을 지정해주는 공간  -->
-    <typeAlias type="com.smhrd.model.TB_BoardDTO" alias="TB_BoardDTO"/>
+    <!--  <typeAlias type="com.smhrd.model.TB_BoardDTO" alias="TB_BoardDTO"/> -->
+    
     <typeAlias type="com.smhrd.model.TB_MemberDTO" alias="TB_MemberDTO"/>
-    <typeAlias type="com.smhrd.model.TB_MessageDTO" alias="TB_MessageDTO"/>
+    <!--  <typeAlias type="com.smhrd.model.TB_MessageDTO" alias="TB_MessageDTO"/> -->
     <typeAlias type="com.smhrd.model.TB_ReservationDTO" alias="TB_ReservationDTO"/>
     <typeAlias type="com.smhrd.model.TB_UserExerciseDTO" alias="TB_UserExerciseDTO"/>
+    <typeAlias type="com.smhrd.model.TB_UserExercise_select_DTO" alias="TB_UserExercise_select_DTO"/>
+    <typeAlias type="com.smhrd.model.TB_UserExercise_select1_DTO" alias="TB_UserExercise_select1_DTO"/>
     </typeAliases>
 
 
@@ -52,9 +55,9 @@
   <!-- 연결하고 싶은 파일의 명칭 -->
   <!-- mapper파일이 생길 때마다 반드시 연결할 수 있도록 기술해줄 것 ! -->
   <mappers>
-    <mapper resource="com/smhrd/db/TB_Board_Mapper.xml"/>
+    <!-- <mapper resource="com/smhrd/db/TB_Board_Mapper.xml"/> -->
     <mapper resource="com/smhrd/db/TB_Member_Mapper.xml"/>
-    <mapper resource="com/smhrd/db/TB_Message_Mapper.xml"/>
+   <!--  <mapper resource="com/smhrd/db/TB_Message_Mapper.xml"/> -->
     <mapper resource="com/smhrd/db/TB_Reservation_Mapper.xml"/>
     <mapper resource="com/smhrd/db/TB_UserExercise_Mapper.xml"/>
   </mappers>

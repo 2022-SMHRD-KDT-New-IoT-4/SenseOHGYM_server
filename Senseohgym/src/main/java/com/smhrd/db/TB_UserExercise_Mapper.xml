@@ -3,26 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.model.TB_UserExerciseDAO">
-	<select id="select" parameterType="TB_UserExerciseDTO"
-		resultType="TB_UserExerciseDTO">
 
-		<!-- 사용시간, 날짜(접수시간) 찾습니다. 왜? 안드로이드 그래프 출력때문엥 -->
-		SELECT RS_USETIME, REG_DATE
+	<select id="select" parameterType="TB_UserExercise_select_DTO"
+		resultType="TB_UserExercise_select_DTO">
+
+		<!-- 사용시간, 날짜(접수시간) 찾습니다. 왜? 안드로이드 그래프 출력때문엥
+				아래 쿼리문은 년, 월, 일 까지만 출력되는 쿼리문임!!	 -->
+		SELECT TO_CHAR(REG_DATE, 'YY/MM/DD') AS REG_DATE_FORMATTED, SUM(RS_USETIME) AS TOTAL_USETIME
 		FROM TB_USER_EXERCISE
-		WHERE MB_CARD = #{mb_card}
+		WHERE MB_CARD = #{mb_card} 
+		AND REG_DATE BETWEEN TO_DATE(SYSDATE-6, 'YY/MM/DD') AND TO_DATE(SYSDATE, 'YY/MM/DD')
+		GROUP BY TO_CHAR(REG_DATE, 'YY/MM/DD')
+		
+		<!-- 
+		SELECT REG_DATE, SUM(RS_USETIME) AS TOTAL_USETIME
+		FROM TB_USER_EXERCISE
+		GROUP BY REG_DATE;
+		
+		
+		 -->
 
         
 	</select>
 	
-		<select id="select" parameterType="TB_UserExerciseDTO"
-		resultType="TB_UserExerciseDTO">
+		<select id="select1" parameterType="TB_UserExercise_select1_DTO"
+		resultType="TB_UserExercise_select1_DTO">
 
 
-		<!-- 사용기구명의 횟수를 넘겨줍니다. MACHINE_COUNT라는 이름으로 구별됨!! -->
+		<!-- 사용기구명의 횟수를 넘겨줍니다. MACHINE_COUNT라는 이름으로 횟수 표시됨!! -->
 		SELECT REV_MACHINE, COUNT(*) AS MACHINE_COUNT
         FROM TB_USER_EXERCISE
         WHERE MB_CARD = #{mb_card} 
-        GROUP BY REV_MACHINE;
+        GROUP BY REV_MACHINE
 
 
         
