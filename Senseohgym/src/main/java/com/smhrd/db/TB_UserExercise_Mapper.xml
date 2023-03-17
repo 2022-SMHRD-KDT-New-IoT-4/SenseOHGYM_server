@@ -21,24 +21,36 @@
 		FROM TB_USER_EXERCISE
 		GROUP BY REG_DATE;
 		
-		
 		 -->
 
         
 	</select>
-	
+		
 		<select id="select1" parameterType="TB_UserExercise_select1_DTO"
 		resultType="TB_UserExercise_select1_DTO">
 
+		<!--  일주일간 기구사용 횟수 넘겨주는 쿼리문 -->
+		SELECT REV_MACHINE, COUNT(REV_MACHINE) AS MACHINE_COUNT
+		FROM TB_USER_EXERCISE
+		WHERE MB_CARD = #{mb_card}
+		AND TO_DATE(REG_DATE,'YYYY-MM-DD') 
+		BETWEEN TO_DATE(SYSDATE - 6,'YYYY-MM-DD')
+		AND TO_DATE(SYSDATE + 1,'YYYY-MM-DD')
+		GROUP BY REV_MACHINE
 
-		<!-- 사용기구명의 횟수를 넘겨줍니다. MACHINE_COUNT라는 이름으로 횟수 표시됨!! -->
+
+
+
+		<!-- 사용기구명의 횟수를 넘겨줍니다. MACHINE_COUNT라는 이름으로 횟수 표시됨!!
 		SELECT REV_MACHINE, COUNT(*) AS MACHINE_COUNT
         FROM TB_USER_EXERCISE
-        WHERE MB_CARD = #{mb_card} 
+        WHERE MB_CARD = #{mb_card}
         GROUP BY REV_MACHINE
-
-
-        
+         -->
+<!--
+일주일 기구명  날짜로 묶어서 그래프 기구명 횟수 일주일치
+ex) 13일 벤치프레스 카운트 
+-->     
 	</select>
 	
 	

@@ -23,5 +23,19 @@ public class TB_ReservationDAO {
 		return row;
 	}
 	
+	// 예약after
+	public TB_ReservationDTO after(TB_ReservationDTO dto) {
+		TB_ReservationDTO result = null;
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		try {
+			result = sqlsession.selectOne("com.smhrd.model.TB_ReservationDAO.after", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlsession.close();
+		}
+		return result;
+	}
+	
 	
 }

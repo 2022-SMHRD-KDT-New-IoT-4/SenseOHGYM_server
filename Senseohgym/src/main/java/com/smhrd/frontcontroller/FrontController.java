@@ -14,6 +14,7 @@ import com.smhrd.controller.Command;
 import com.smhrd.controller.Member_JoinProgram;
 import com.smhrd.controller.Member_LoginProgram;
 import com.smhrd.controller.Member_SelectAllProgram;
+import com.smhrd.controller.Reservation_afterProgram;
 import com.smhrd.controller.Reservation_joinProgram;
 import com.smhrd.controller.UserExercise_SelectAllProgram;
 import com.smhrd.controller.UserExercise_TossProgram;
@@ -34,6 +35,8 @@ public class FrontController extends HttpServlet {
 						
 		// TB_RESERVATION
 		map.put("Reservation_Join.do", new Reservation_joinProgram());
+		map.put("Reservation_after.do", new Reservation_afterProgram());
+		
 						
 		// TB_USEREXERCISE
 		map.put("UserExercise_Toss.do", new UserExercise_TossProgram());

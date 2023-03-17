@@ -10,6 +10,17 @@
 		INSERT INTO TB_RESERVATION(mb_card, rs_machine, use_time, reg_time)
 		VALUES (#{mb_card},#{rs_machine},#{use_time},SYSDATE)
   	</insert>
+  	
+  	  	<!-- 예약여부 확인 -->
+	<select id="after" parameterType="TB_ReservationDTO" resultType= "TB_ReservationDTO"   >
+
+		SELECT * FROM TB_RESERVATION
+		WHERE rs_machine = #{rs_machine} 
+		
+		
+		
+		
+  	</select>
   
   
   </mapper>

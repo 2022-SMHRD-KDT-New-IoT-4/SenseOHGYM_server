@@ -14,6 +14,16 @@ public class TB_ReservationDTO {
 		this.rs_machine = rs_machine;
 		this.use_time = use_time;
 	}
+	
+	
+
+
+	public TB_ReservationDTO(String rs_machine) {
+		super();
+		this.rs_machine = rs_machine;
+	}
+
+
 
 	public int getRev_seq() {
 		return rev_seq;
