@@ -8,6 +8,10 @@ public class TB_ReservationDTO {
 	private int use_time; // 사용시간
 	private String reg_time; // 접수시간
 
+	public TB_ReservationDTO() {
+		super();
+	}
+	
 	public TB_ReservationDTO(String mb_card, String rs_machine, int use_time) {
 		super();
 		this.mb_card = mb_card;
@@ -15,16 +19,10 @@ public class TB_ReservationDTO {
 		this.use_time = use_time;
 	}
 	
-	
-
-
 	public TB_ReservationDTO(String rs_machine) {
 		super();
 		this.rs_machine = rs_machine;
 	}
-
-
-
 	public int getRev_seq() {
 		return rev_seq;
 	}

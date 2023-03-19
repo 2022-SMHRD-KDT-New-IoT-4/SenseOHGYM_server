@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.smhrd.controller.Command;
+import com.smhrd.controller.Member_DeleteProgram;
 import com.smhrd.controller.Member_JoinProgram;
 import com.smhrd.controller.Member_LoginProgram;
 import com.smhrd.controller.Member_SelectAllProgram;
+import com.smhrd.controller.Member_UpdateProgram;
 import com.smhrd.controller.Reservation_afterProgram;
 import com.smhrd.controller.Reservation_joinProgram;
 import com.smhrd.controller.UserExercise_SelectAllProgram;
@@ -32,7 +34,9 @@ public class FrontController extends HttpServlet {
 		map.put("Member_Login.do", new Member_LoginProgram());
 		map.put("Member_Join.do", new Member_JoinProgram());
 		map.put("Member_SelectAll.do", new Member_SelectAllProgram());
-						
+		map.put("Member_Update.do", new Member_UpdateProgram());
+		map.put("Member_Delete.do", new Member_DeleteProgram());
+		
 		// TB_RESERVATION
 		map.put("Reservation_Join.do", new Reservation_joinProgram());
 		map.put("Reservation_after.do", new Reservation_afterProgram());

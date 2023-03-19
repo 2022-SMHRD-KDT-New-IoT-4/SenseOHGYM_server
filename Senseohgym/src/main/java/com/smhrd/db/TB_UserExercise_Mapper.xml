@@ -15,21 +15,11 @@
 	    AND REG_DATE BETWEEN TO_DATE(SYSDATE-6, 'YY/MM/DD') AND TO_DATE(SYSDATE+1, 'YY/MM/DD')
         GROUP BY TO_CHAR(REG_DATE, 'YY/MM/DD')
         ORDER BY TO_CHAR(REG_DATE, 'YY/MM/DD')
-		
-		<!-- 
-		SELECT REG_DATE, SUM(RS_USETIME) AS TOTAL_USETIME
-		FROM TB_USER_EXERCISE
-		GROUP BY REG_DATE;
-		
-		 -->
-
-        
 	</select>
-		
-		<select id="select1" parameterType="TB_UserExercise_select1_DTO"
-		resultType="TB_UserExercise_select1_DTO">
-
-		<!--  일주일간 기구사용 횟수 넘겨주는 쿼리문 -->
+	
+	<!--  일주일간 기구사용 횟수 넘겨주는 쿼리문 -->
+	<select id="select1" parameterType="TB_UserExercise_select1_DTO"
+	resultType="TB_UserExercise_select1_DTO">
 		SELECT REV_MACHINE, COUNT(REV_MACHINE) AS MACHINE_COUNT
 		FROM TB_USER_EXERCISE
 		WHERE MB_CARD = #{mb_card}
@@ -37,29 +27,23 @@
 		BETWEEN TO_DATE(SYSDATE - 6,'YYYY-MM-DD')
 		AND TO_DATE(SYSDATE + 1,'YYYY-MM-DD')
 		GROUP BY REV_MACHINE
-
-
-
-
-		<!-- 사용기구명의 횟수를 넘겨줍니다. MACHINE_COUNT라는 이름으로 횟수 표시됨!!
-		SELECT REV_MACHINE, COUNT(*) AS MACHINE_COUNT
-        FROM TB_USER_EXERCISE
-        WHERE MB_CARD = #{mb_card}
-        GROUP BY REV_MACHINE
-         -->
-<!--
-일주일 기구명  날짜로 묶어서 그래프 기구명 횟수 일주일치
-ex) 13일 벤치프레스 카운트 
--->     
 	</select>
 	
+	<!-- 관리자에게 운동기구 사용정보 넘겨주기 -->
+	<select id="selectAll" parameterType="String" resultType="AdminEexerciseDTO">
+		SELECT REV_MACHINE, count(REV_MACHINE) as cnt
+		FROM TB_USER_EXERCISE
+		WHERE GYMNAME = #{gym_name}
+		AND TO_DATE(REG_DATE, 'YYYY-MM-DD') 
+    		BETWEEN TO_DATE(SYSDATE - 6, 'YYYY-MM-DD')
+    		AND TO_DATE(SYSDATE + 1, 'YYYY-MM-DD')
+		GROUP BY REV_MACHINE
+	</select>
 	
+	<!-- 아두이노에서 보낸 운동정보 저장 -->
+	<select id="insert" parameterType="TB_UserExerciseDTO">
+		INSERT INTO TB_USER_EXERCISE(MB_CARD, RS_USETIME, REV_MACHINE, REG_DATE, GYMNAME)
+		VALUES (#{mb_card},#{rs_usetime},#{rev_machine},SYSDATE,#{gymname})
+	</select>
 	
-	
-	
-	
-
-
-
-
 </mapper>

@@ -55,4 +55,47 @@ public class TB_MemberDAO {
 
 		return result;
 	}
+
+	// 회원정보 수정 update(관리자)
+	public int update(TB_MemberDTO dto) {
+		int row = 0;
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		try {
+			row = sqlsession.update("com.smhrd.model.TB_MemberDAO.update", dto);
+			sqlsession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlsession.close();
+		}
+		return row;
+	}
+
+	// 회원정보 삭제 delete(관리자)
+	public int delete(TB_MemberDTO dto) {
+		int row = 0;
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		try {
+			row = sqlsession.update("com.smhrd.model.TB_MemberDAO.delete", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlsession.close();
+		}
+		return row;
+	}
+
+	// 카드번호로 회원의 헬스장 이름 select(아두이노가 보낸 운동정보를 저장하기 위해)
+	public String selectGym(String mb_card) {
+		String result = "";
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		try {
+			result = sqlsession.selectOne("com.smhrd.model.TB_MemberDAO.selectGym", mb_card);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlsession.close();
+		}
+		return result;
+	}
 }

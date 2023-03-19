@@ -25,6 +25,27 @@
 		AND MB_NAME != 'admin'
 	</select> 
 	
+	<!-- Member 수정 update -->
+	<update id="update" parameterType="TB_MemberDTO">
+		UPDATE TB_MEMBER
+		SET MB_NAME = #{mb_name},
+			MB_BIRTHDATE = #{mb_birthdate}, MB_GENDER = #{mb_gender}
+		WHERE MB_CARD = #{mb_card} AND GYM_NAME = #{gym_name}
+	</update>
 	
-  
+	<!-- Member 삭제 delete -->
+	<delete id="delete" parameterType="TB_MemberDTO">
+		DELETE FROM TB_MEMBER
+		WHERE GYM_NAME = #{gym_name}
+		AND MB_NAME = #{mb_name} 
+		AND MB_CARD = #{mb_card}
+	</delete>
+	
+	<!-- 카드번호로 헬스장 이름 select -->
+	<select id="selectGym">
+		SELECT GYM_NAME 
+		FROM TB_MEMBER
+		WHERE MB_CARD = #{mb_card}
+	</select>
+	
   </mapper>
