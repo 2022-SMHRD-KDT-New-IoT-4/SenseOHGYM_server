@@ -41,22 +41,22 @@ public class Reservation_afterProgram implements Command {
 		
 		
 		if(result != null) { 
-			// 예약after 성공
+			// 예약정보가 있음 예약불가
 			// 안드로이드에 해당 값을 보내줘야함
-			System.out.println(dto.getRev_seq()+" 예약after 완료 .");
+			System.out.println(dto.getRs_machine()+" 예약정보가 있음.");
 			//reservationJson = reservationJson.toJson(row);
 			// 제이슨형식으로 보내주기
 			//response.setContentType("application/json; charset=UTF-8"); 
 			//response.setContentType("charset=UTF-8");
 			// 안드로이드 전송
 			response.getWriter().print(1); 
-			return "예약after 완료";
+			return "예약정보가 있음";
 			
 		}else {
 			//예약실패
-			System.out.println("예약after실패");
+			System.out.println("예약정보가 없음");
 			response.getWriter().print(0);
-			return "예약after 재시도 바람";
+			return "예약정보가 없음";
 		}
 	}
 	
