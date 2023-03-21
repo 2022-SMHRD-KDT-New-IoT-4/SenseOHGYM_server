@@ -4,13 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.smhrd.model.TB_ReservationDAO">
   
-  	<!-- 예약하기 reservation -->
+  	<!-- 예약하기 -->
 	<insert id="join" parameterType="TB_ReservationDTO">
 		INSERT INTO TB_RESERVATION(mb_card, rs_machine, use_time, reg_time)
 		VALUES (#{mb_card},#{rs_machine},#{use_time},SYSDATE)
   	</insert>
   	
-  	  	<!-- 예약여부 확인 -->
+  	<!-- 예약여부 확인 -->
 	<select id="after" parameterType="TB_ReservationDTO" resultType= "TB_ReservationDTO"   >
 		SELECT * FROM TB_RESERVATION
 		WHERE rs_machine = #{rs_machine} 
@@ -26,9 +26,8 @@
 	<!-- 예약정보 삭제 -->
 	<delete id="delete" parameterType="TB_ReservationDTO">
 		DELETE FROM TB_RESERVATION
-		WHERE GYM_NAME = #{gym_name}
+		WHERE RS_MACHINE = #{rs_machine}
 		AND MB_CARD = #{mb_card}
 	</delete>
-  
   
   </mapper>

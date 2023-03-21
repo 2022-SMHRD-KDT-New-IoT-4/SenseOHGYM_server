@@ -4,10 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.model.TB_UserExerciseDAO">
 
+	<!-- 일주일간 운동 시간 확인 -->
 	<select id="select" parameterType="TB_UserExercise_select_DTO"
 		resultType="TB_UserExercise_select_DTO">
 
-		<!-- 사용시간, 날짜(접수시간) 찾습니다. 왜? 안드로이드 그래프 출력때문엥
+		<!-- 사용시간, 날짜(접수시간) 찾습니다. 왜? 안드로이드 그래프 출력때문에
 				아래 쿼리문은 년, 월, 일 까지만 출력되는 쿼리문임!!	 -->
 		SELECT TO_CHAR(REG_DATE, 'YY/MM/DD') AS REG_DATE_FORMATTED, SUM(RS_USETIME) AS TOTAL_USETIME
 		FROM TB_USER_EXERCISE
@@ -17,7 +18,7 @@
         ORDER BY TO_CHAR(REG_DATE, 'YY/MM/DD')
 	</select>
 	
-	<!--  일주일간 기구사용 횟수 넘겨주는 쿼리문 -->
+	<!--  일주일간 운동기구 사용횟수 확인 -->
 	<select id="select1" parameterType="TB_UserExercise_select1_DTO"
 	resultType="TB_UserExercise_select1_DTO">
 		SELECT REV_MACHINE, COUNT(REV_MACHINE) AS MACHINE_COUNT
@@ -29,7 +30,7 @@
 		GROUP BY REV_MACHINE
 	</select>
 	
-	<!-- 관리자에게 운동기구 사용정보 넘겨주기 -->
+	<!-- 일주일간 운동기구 사용정보 확인(관리자) -->
 	<select id="selectAll" parameterType="String" resultType="AdminEexerciseDTO">
 		SELECT REV_MACHINE, count(REV_MACHINE) as cnt
 		FROM TB_USER_EXERCISE

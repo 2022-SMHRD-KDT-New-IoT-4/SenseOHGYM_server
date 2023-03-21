@@ -13,12 +13,12 @@ import com.google.gson.Gson;
 import com.smhrd.model.TB_UserExerciseDAO;
 import com.smhrd.model.TB_UserExerciseDTO;
 
+// 개인 운동정보 확인
 public class UserExercise_TossProgram implements Command {
-	// 운동정보 보내기
+	
 	List<TB_UserExerciseDTO> result;
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		
 		//카드번호
 		String mb_card = request.getParameter("mb_card");
@@ -29,14 +29,11 @@ public class UserExercise_TossProgram implements Command {
 		System.out.println("안드로이드에서 넘어온 값 확인");
 		System.out.println(mb_card);
 		System.out.println(btn_type);
-
 		
 		Gson gson = new Gson();
 		String UserExserciseJson = ""; // Json을 담을 변수
 		TB_UserExerciseDTO dto = new TB_UserExerciseDTO(mb_card);
 		TB_UserExerciseDAO dao = new TB_UserExerciseDAO();
-		
-	
 		
 		switch (btn_type) {
 		case "0": {
@@ -56,9 +53,6 @@ public class UserExercise_TossProgram implements Command {
 		//기구사용횟수 버튼을 누르면 select1함수 쿼리문의 값이 출력
 		System.out.println(result); 
 		
-		
-		
-		
 
 		if(result != null) {
 			System.out.println(dto.getExr_seq()+" 운동정보 보내기 완료 .");
@@ -66,8 +60,7 @@ public class UserExercise_TossProgram implements Command {
 			UserExserciseJson = gson.toJson(result);
 			System.out.println(UserExserciseJson);
 			// 제이슨형식으로 보내주기
-			response.setContentType("application/json; charset=UTF-8"); 
-			response.setContentType("charset=UTF-8");
+			response.setContentType("application/json; charset=UTF-8");
 			// 안드로이드 전송
 			response.getWriter().print(UserExserciseJson); 
 			return "운동정보 전송 완료";
@@ -76,7 +69,6 @@ public class UserExercise_TossProgram implements Command {
 			// 운동정보전송실패
 			System.out.println("전송실패");
 			response.setContentType("charset=UTF-8");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print("운동정보를 보내기 위한 값들이 충분하지 않습니다.");
 			return "운동정보 전송 재시도 바람";
 		}

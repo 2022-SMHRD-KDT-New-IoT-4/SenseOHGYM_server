@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.smhrd.model.TB_MemberDAO;
 import com.smhrd.model.TB_MemberDTO;
 
+// 회원 전체 목록 확인(관리자)
 public class Member_SelectAllProgram implements Command{
 
 	@Override

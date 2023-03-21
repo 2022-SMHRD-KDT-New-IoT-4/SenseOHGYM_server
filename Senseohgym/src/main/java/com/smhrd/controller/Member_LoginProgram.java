@@ -11,8 +11,8 @@ import com.google.gson.JsonObject;
 import com.smhrd.model.TB_MemberDAO;
 import com.smhrd.model.TB_MemberDTO;
 
+// 회원 로그인
 public class Member_LoginProgram implements Command{
-	// 회원 로그인
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -20,7 +20,6 @@ public class Member_LoginProgram implements Command{
 		String gym_name = (String)request.getParameter("gym_name");
 		String mb_name = (String)request.getParameter("mb_name");
 		String mb_card = (String)request.getParameter("mb_card");
-		System.out.println();
 		
 		Gson gson = new Gson();
 		String memJson = "";

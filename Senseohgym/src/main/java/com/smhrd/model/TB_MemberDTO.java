@@ -1,5 +1,6 @@
 package com.smhrd.model;
 
+// 등록된 회원정보가 저장되는 테이블
 public class TB_MemberDTO {
 
 	private String mb_name; // 회원이름

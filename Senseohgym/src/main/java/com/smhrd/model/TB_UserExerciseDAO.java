@@ -11,7 +11,7 @@ public class TB_UserExerciseDAO {
 
 	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 
-	// 운동정보 보내기 TB_UserExerciseDTO
+	// 운동정보 보내기(회원, 일주일간 운동 시간)
 	public List<TB_UserExerciseDTO> select(TB_UserExerciseDTO dto) {
 
 		List<TB_UserExerciseDTO> result = null;
@@ -29,7 +29,7 @@ public class TB_UserExerciseDAO {
 		return result;
 	}
 
-	// 운동정보 보내기 TB_UserExerciseDTO
+	// 운동정보 보내기(회원, 일주일간 운동기구 사용횟수)
 	public List<TB_UserExerciseDTO> select1(TB_UserExerciseDTO dto) {
 		List<TB_UserExerciseDTO> result1 = null;
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -46,7 +46,7 @@ public class TB_UserExerciseDAO {
 		return result1;
 	}
 
-	// 운동정보 보내기(관리자)
+	// 운동정보 보내기(관리자, 일주인간 운동기구 사용횟수)
 	public List<AdminEexerciseDTO> selectAll(String gym_name) {
 		List<AdminEexerciseDTO> result = null;
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -63,7 +63,7 @@ public class TB_UserExerciseDAO {
 		return result;
 	}
 
-	// 아두이노에서 보낸 운동정보 insert
+	// 아두이노에서 보낸 운동정보 저장
 	public int insert(TB_UserExerciseDTO data) {
 		int row = 0;
 

@@ -9,7 +9,7 @@ public class TB_ReservationDAO {
 
 	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 
-	// 예약하기 reservation
+	// 예약하기
 	public int reservation(TB_ReservationDTO dto) {
 		int row = 0;
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -23,7 +23,7 @@ public class TB_ReservationDAO {
 		return row;
 	}
 
-	// 예약after, 예약여부 확인
+	// 예약여부 확인
 	public TB_ReservationDTO after(TB_ReservationDTO dto) {
 		TB_ReservationDTO result = null;
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);

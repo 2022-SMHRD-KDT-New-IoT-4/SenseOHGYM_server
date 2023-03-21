@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.smhrd.model.TB_MemberDAO;
 import com.smhrd.model.TB_MemberDTO;
 
-// 회원정보 update
+// 회원정보 업데이트(관리자)
 public class Member_UpdateProgram implements Command{
 
 	@Override

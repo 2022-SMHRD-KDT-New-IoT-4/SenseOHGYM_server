@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.smhrd.model.AdminEexerciseDTO;
 import com.smhrd.model.TB_UserExerciseDAO;
 
+// 운동기구 사용 정보 확인(관리자)
 public class UserExercise_SelectAllProgram implements Command{
 
 	@Override
@@ -30,7 +31,6 @@ public class UserExercise_SelectAllProgram implements Command{
 			// 제이슨 형식으로 보내겠다 ; 형식
 			response.setContentType("application/json; charset=UTF-8");
 			response.getWriter().print(resultJson);
-			
 			return "운동정보 전송완료";
 		}else {
 			return "운동정보 없음";

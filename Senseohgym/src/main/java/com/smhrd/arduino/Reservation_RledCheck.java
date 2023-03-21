@@ -15,6 +15,7 @@ import com.google.gson.JsonParser;
 import com.smhrd.model.TB_ReservationDAO;
 import com.smhrd.model.TB_ReservationDTO;
 
+// 기구에 예약정보가 있는지 확인
 @WebServlet("/RledCheck")
 public class Reservation_RledCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;

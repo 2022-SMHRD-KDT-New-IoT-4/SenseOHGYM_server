@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.model.TB_MemberDAO;
 import com.smhrd.model.TB_MemberDTO;
 
+// 회원정보 삭제(관리자)
 public class Member_DeleteProgram implements Command{
 
 	@Override

@@ -18,6 +18,7 @@ import com.smhrd.model.TB_ReservationDTO;
 import com.smhrd.model.TB_UserExerciseDAO;
 import com.smhrd.model.TB_UserExerciseDTO;
 
+// 제품에 카드를 태그했을 때 기구 사용 가능 여부 판단 및 보내준 운동정보 저장
 @WebServlet("/GledCheck")
 public class Reservation_GledCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -64,6 +65,7 @@ public class Reservation_GledCheck extends HttpServlet {
 				writer.flush();
 				// 예약자가 운동기구를 사용하게 되면 예약정보를 삭제해야 함
 				dto.setMb_card(cardId);
+				dto.setRs_machine(machine);
 				int row = dao.delete(dto);
 				
 				if(row > 0) {
@@ -80,7 +82,6 @@ public class Reservation_GledCheck extends HttpServlet {
 				JsonParser parser = new JsonParser();
 				JsonObject jsonObject = (JsonObject) parser.parse(str);
 				String resultJson = gson.toJson(jsonObject);
-				// String resultJson = gson.toJson(str);
 				System.out.println(resultJson);
 
 				writer.write(resultJson);
@@ -91,7 +92,7 @@ public class Reservation_GledCheck extends HttpServlet {
 
 		} else {
 			// 예약 정보가 없음(사용가능)
-			String str = "{\"사용가능여부\":2, \"사용시간\":3}";
+			String str = "{\"사용가능여부\":2, \"사용시간\":20}";
 			useTime = 3;
 			JsonParser parser = new JsonParser();
 			JsonObject jsonObject = (JsonObject) parser.parse(str);
