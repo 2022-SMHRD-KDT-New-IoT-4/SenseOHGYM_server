@@ -35,6 +35,8 @@ public class Reservation_GledCheck extends HttpServlet {
 		String machine = request.getParameter("machine");
 		// 사용 시간이 끝났는지 확인
 		String done = request.getParameter("done");
+		// 실제 사용시간
+		int totalMin = Integer.parseInt(request.getParameter("totalMin"));
 		System.out.println("cardId : " + cardId);
 		System.out.println("machine : " + machine);
 		// 운동시간을 담아두는 변수
@@ -110,14 +112,14 @@ public class Reservation_GledCheck extends HttpServlet {
 			// 운동정보 저장
 			// 카드번호,사용시간,사용기구명,헬스장명
 			TB_UserExerciseDTO data = new TB_UserExerciseDTO(cardId);
-			data.setRs_usetime(useTime);
+			data.setRs_usetime(totalMin);
 			data.setRev_machine(machine);
 			// 헬스장 이름 member테이블에서 가져오기
 			TB_MemberDAO memDao = new TB_MemberDAO();
 			String gym_name = memDao.selectGym(cardId);
 			data.setGymname(gym_name);
 			
-			System.out.println("헬스장 이름 : "+data.getRev_machine());
+			System.out.println("헬스장 이름 : "+data.getGymname());
 
 			TB_UserExerciseDAO insertDao = new TB_UserExerciseDAO();
 			int row = insertDao.insert(data);
